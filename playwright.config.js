@@ -1,12 +1,23 @@
-import { defineConfig, devices } from '@playwright/test';
+// playwright.config.js
+const { defineConfig } = require('@playwright/test');
 
-export default defineConfig({
+module.exports = defineConfig({
   testDir: './tests',
-  testMatch: /.*\.(js|ts|jsx|tsx)/,
+
+  retries: process.env.CI ? 1 : 0,
+
+  workers: process.env.CI ? 2 : undefined,
+
   use: {
-    headless: false,   // <-- браузер будет видимым
-    viewport: { width: 1280, height: 720 },
-    actionTimeout: 10000,
-    navigationTimeout: 20000,
+    headless: !!process.env.CI, 
+    screenshot: 'only-on-failure',
+    video: 'retain-on-failure',
+    trace: 'on-first-retry',
+    baseURL: 'https://www.saucedemo.com',
   },
+
+  reporter: [
+    ['list'],
+    ['html', { open: 'never' }],
+  ],
 });
