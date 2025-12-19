@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+test.skip(process.env.CI === 'true', 'Skip API tests in CI');
 
 test('POST /add new products', async ({ request }) => {
   const response = await request.post('https://fakestoreapi.com/products', {
