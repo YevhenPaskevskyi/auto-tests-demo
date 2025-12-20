@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { allure } from 'allure-playwright';
+import * as allure from "allure-js-commons";
 
 test('successful login', async ({ page }) => {
   await allure.step('Open login page', async () => {
