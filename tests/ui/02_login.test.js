@@ -7,7 +7,7 @@ test('successful login', async ({ page }) => {
   });
 
   await allure.step('Enter credentials', async () => {
-    await page.fill('#user-name', 'standard_user');
+    await page.fill('#user-name', 'standard_userA');
     await page.fill('#password', 'secret_sauce');
   });
 
