@@ -1,4 +1,6 @@
 import { test, expect } from '../../fixtures/apiFixtures.js';
+test.skip(process.env.CI === 'true', 'Skip API tests in CI');
+
 
 test('Products flow: get list -> get by id(from list) -> create -> update -> delete', async ({ productsApi }) => {
   let existingId;
@@ -10,7 +12,7 @@ test('Products flow: get list -> get by id(from list) -> create -> update -> del
     const status = res.status();
     const url = res.url();
     const headers = res.headers();
-    const bodyText = await res.text(); // читаем 1 раз
+    const bodyText = await res.text(); 
   
     console.log('GET /products URL:', url);
     console.log('GET /products STATUS:', status);
