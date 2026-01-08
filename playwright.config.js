@@ -22,7 +22,7 @@ export default defineConfig({
     },
     {
       name: 'api',
-      testMatch: 'api/**/*.spec.js',
+      testMatch: 'api/specs/**/*.spec.js',
       use: {
         baseURL: 'https://fakestoreapi.com',
       },
