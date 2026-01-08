@@ -6,12 +6,23 @@ test('Products flow: get list -> get by id(from list) -> create -> update -> del
 
   await test.step('GET /products returns list of products (take first id)', async () => {
     const res = await productsApi.getProducts();
-    expect(res.status()).toBe(200);
-
-    const products = await res.json();
+  
+    const status = res.status();
+    const url = res.url();
+    const headers = res.headers();
+    const bodyText = await res.text(); // читаем 1 раз
+  
+    console.log('GET /products URL:', url);
+    console.log('GET /products STATUS:', status);
+    console.log('GET /products HEADERS:', headers);
+    console.log('GET /products BODY:', bodyText);
+  
+    expect(status).toBe(200);
+  
+    const products = JSON.parse(bodyText);
     expect(Array.isArray(products)).toBe(true);
     expect(products.length).toBeGreaterThan(0);
-
+  
     existingId = products[0].id;
     expect(existingId).toBeTruthy();
   });
