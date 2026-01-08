@@ -1,5 +1,4 @@
 import { test, expect } from '../../fixtures/apiFixtures.js';
-
 test.skip(process.env.CI === 'true', 'Skip API tests in CI');
 
 test('Users  flow: list -> get by id -> create -> update -> delete', async ({ usersApi }) => {
