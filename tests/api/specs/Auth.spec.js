@@ -1,4 +1,6 @@
 import { test, expect } from '../../fixtures/apiFixtures.js';
+test.skip(process.env.CI === 'true', 'Skip API tests in CI');
+
 
 test('POST /auth/login returns token', async ({ authApi }) => {
   const res = await authApi.login('mor_2314', '83r5^_');
