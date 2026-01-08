@@ -13,7 +13,7 @@ export default defineConfig({
       name: 'ui',
       testMatch: 'ui/**/*.test.js',
       use: {
-        headless: !!process.env.CI,
+        headless: true,//!!process.env.CI,
         screenshot: 'only-on-failure',
         video: 'retain-on-failure',
         trace: 'on-first-retry',

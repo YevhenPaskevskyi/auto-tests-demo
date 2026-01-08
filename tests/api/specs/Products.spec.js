@@ -1,5 +1,5 @@
 import { test, expect } from '../../fixtures/apiFixtures.js';
-test.skip(process.env.CI === 'true', 'Skip API tests in CI');
+//test.skip(process.env.CI === 'true', 'Skip API tests in CI');
 
 
 test('Products flow: get list -> get by id(from list) -> create -> update -> delete', async ({ productsApi }) => {
@@ -16,8 +16,8 @@ test('Products flow: get list -> get by id(from list) -> create -> update -> del
   
     console.log('GET /products URL:', url);
     console.log('GET /products STATUS:', status);
-    console.log('GET /products HEADERS:', headers);
-    console.log('GET /products BODY:', bodyText);
+    //console.log('GET /products HEADERS:', headers);
+    //console.log('GET /products BODY:', bodyText);
   
     expect(status).toBe(200);
   
