@@ -1,6 +1,6 @@
 import { test, expect } from '../../fixtures/apiFixtures.js';
 
-test.skip(process.env.CI === 'true', 'Skip API tests in CI');
+//test.skip(process.env.CI === 'true', 'Skip API tests in CI');
 
 test('Cart flow: list -> get by id -> create -> update -> delete', async ({ cartsApi }) => {
   let existingId;
