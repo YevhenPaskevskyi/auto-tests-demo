@@ -6,16 +6,26 @@ export default defineConfig({
   retries: process.env.CI ? 1 : 0,
   workers: process.env.CI ? 2 : undefined,
 
-  use: {
-    headless: !!process.env.CI,
-    screenshot: 'only-on-failure',
-    video: 'retain-on-failure',
-    trace: 'on-first-retry',
-    baseURL: 'https://www.saucedemo.com',
-  },
+  reporter: [['list'], ['allure-playwright']],
 
-  reporter: [
-    ['list'],
-    ['allure-playwright'],
+  projects: [
+    {
+      name: 'ui',
+      testMatch: 'ui/**/*.test.js',
+      use: {
+        headless: !!process.env.CI,
+        screenshot: 'only-on-failure',
+        video: 'retain-on-failure',
+        trace: 'on-first-retry',
+        baseURL: 'https://www.saucedemo.com',
+      },
+    },
+    {
+      name: 'api',
+      testMatch: 'api/**/*.spec.js',
+      use: {
+        baseURL: 'https://fakestoreapi.com',
+      },
+    },
   ],
 });
