@@ -1,6 +1,6 @@
 import { test, expect } from '../../fixtures/apiFixtures.js';
 
-test.skip(!!process.env.CI, 'Skip API tests in CI');
+test.skip(process.env.CI === 'true', 'Skip API tests in CI');
 
 test('Cart flow: list -> get by id -> create -> update -> delete', async ({ cartsApi }) => {
   let existingId;
@@ -33,7 +33,7 @@ test('Cart flow: list -> get by id -> create -> update -> delete', async ({ cart
       products: [{ productId: 5, quantity: 1 }],
     };
 
-    const res = await cartsApi.createCart(payload); // или addCart — как у вас в клиенте
+    const res = await cartsApi.createCart(payload);
     expect([200, 201]).toContain(res.status());
 
     const body = await res.json();
