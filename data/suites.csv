@@ -1,4 +1,4 @@
 "DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
-"","1095","problem_user","ui","2026-01-08","passed","2026-01-08","","ui/00_problem_user.test.js","",""
-"","936","test","ui","2026-01-08","passed","2026-01-08","","ui/01_login.locked_out_user.test.js","",""
-"","702","successful login","ui","2026-01-08","passed","2026-01-08","","ui/02_login.test.js","",""
+"","890","problem_user","ui","2026-01-08","passed","2026-01-08","","ui/00_problem_user.test.js","",""
+"","608","successful login","ui","2026-01-08","passed","2026-01-08","","ui/02_login.test.js","",""
+"","762","test","ui","2026-01-08","passed","2026-01-08","","ui/01_login.locked_out_user.test.js","",""
