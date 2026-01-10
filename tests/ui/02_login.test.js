@@ -1,21 +1,38 @@
-import { test, expect } from '@playwright/test';
-import * as allure from "allure-js-commons";
+import { test } from '@playwright/test';
+import * as allure from 'allure-js-commons';
+import { LoginPage } from '../pages/LoginPage';
+import { users } from '../testData/users';
 
-test('successful login', async ({ page }) => {
-  await allure.step('Open login page', async () => {
-    await page.goto('/');
-  });
+test.describe('Login with different users', () => {
 
-  await allure.step('Enter credentials', async () => {
-    await page.fill('#user-name', 'standard_user');
-    await page.fill('#password', 'secret_sauce');
-  });
+  const positiveUsers = [
+    users.standard,
+    users.problem,
+    users.performance,
+    users.error,
+    users.visual,
+  ];
 
-  await allure.step('Click login', async () => {
-    await page.click('#login-button');
-  });
+  for (const user of positiveUsers) {
+    test(`login as ${user.username}`, async ({ page }) => {
+      const loginPage = new LoginPage(page);
 
-  await allure.step('Verify successful login', async () => {
-    await expect(page).toHaveURL(/inventory/);
-  });
+      await allure.step('Open login page', async () => {
+        await loginPage.open();
+      });
+
+      let inventoryPage;
+
+      await allure.step(`Login as ${user.username}`, async () => {
+        inventoryPage = await loginPage.login(
+          user.username,
+          user.password
+        );
+      });
+
+      await allure.step('Verify successful login', async () => {
+        await inventoryPage.isOpened();
+      });
+    });
+  }
 });
